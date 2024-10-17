@@ -1,0 +1,19 @@
+{
+  "name": "world-bank-bk",
+  "version": "1.0.0",
+  "description": "\"This is loan management project\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "farukulWD",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.6",
+    "typescript": "^5.6.3"
+  }
+}
