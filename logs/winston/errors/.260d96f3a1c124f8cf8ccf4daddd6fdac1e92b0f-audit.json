@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "E:\\Projects\\worldBank\\world-bank-bk\\logs\\winston\\errors\\.260d96f3a1c124f8cf8ccf4daddd6fdac1e92b0f-audit.json",
+    "files": [
+        {
+            "date": 1729191444290,
+            "name": "E:\\Projects\\worldBank\\world-bank-bk\\logs\\winston\\errors\\phu-2024-18-10-00-error.log",
+            "hash": "4b15bd1a2fe2bbed10584feeb59917c15b6d549bf6f49494e1c3a9d0a2cc2ce6"
+        }
+    ],
+    "hashType": "sha256"
+}
