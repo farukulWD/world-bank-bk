@@ -2,9 +2,11 @@ import { Server } from 'http';
 import app from './app';
 import config from './config';
 import { errorlogger, logger } from './shared/logger';
+import connectDB from './utils/db';
 
 
 async function bootstrap() {
+  await connectDB()
   const server: Server = app.listen(config.port, () => {
     logger.info(`Server running on port ${config.port}`);
   });
