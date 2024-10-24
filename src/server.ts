@@ -2,7 +2,8 @@ import { Server } from 'http';
 import app from './app';
 import config from './app/config';
 import { errorlogger, logger } from './app/shared/logger';
-import connectDB from './utils/db';
+import connectDB from './app/utils/db';
+
 
 
 async function bootstrap() {

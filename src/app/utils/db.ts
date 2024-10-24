@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
-import { logger } from '../app/shared/logger';
-import config from '../app/config';
+import config from '../config';
+import { logger } from '../shared/logger';
+
 
 
 const connectDB = async () => {
