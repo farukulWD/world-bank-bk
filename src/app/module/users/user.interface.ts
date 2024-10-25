@@ -2,21 +2,29 @@
 import { Model } from 'mongoose';
 import { USER_ROLE } from './user.constant';
 
-
-export interface TUser {
-  id: string;
-  email: string;
+export interface TUser extends Document {
+  name: string;
+  email?: string;
+  mobile: number;
+  profileImg: string;
   password: string;
   passwordChangedAt?: Date;
-  role: 'superAdmin' | 'admin' | 'student' | 'faculty';
+  role: 'superAdmin' | 'admin' | 'user';
   status: 'active' | 'inactive';
   isDeleted: boolean;
+  address?: {
+    address: string;
+    city: string;
+    state: string;
+    postal: number;
+    country: 'Bangladesh';
+  };
+  isMobileVefify?: boolean;
+  isEmailVefify?: boolean;
+  kyc?: boolean;
 }
-
 export interface UserModel extends Model<TUser> {
-  //instance methods for checking if the user exist
-  isUserExistsByCustomId(id: string): Promise<TUser>;
-  //instance methods for checking if passwords are matched
+  isUserExistsByCustomId(id: string): Promise<TUser | null>;
   isPasswordMatched(
     plainTextPassword: string,
     hashedPassword: string,

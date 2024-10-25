@@ -1,22 +1,25 @@
-import express, { Application, RequestHandler } from "express"
-import cors from "cors"
-import router from "./app/routes"
-import notFound from "./app/middlewares/notFound"
-import globalErrorHandler from "./app/middlewares/globalErrorhandler"
+import express, {
+  Application,
+  Request,
+  RequestHandler,
+  Response,
+} from 'express';
+import cors from 'cors';
+import router from './app/routes';
+import globalErrorHandler from './app/middlewares/globalErrorhandler';
+import notFound from './app/middlewares/notFound';
 
+const app: Application = express();
+app.use(cors());
+app.use(express.json());
+app.get('/', (req: Request, res: Response) => {
+  res.send('Hi world bank !');
+});
+app.use('/api/v1', router);
 
-
-const app:Application = express()
-app.use(cors())
-app.use(express.json())
-
-app.use("/api/v1",router)
-app.use(notFound);
 app.use(globalErrorHandler);
 
 //Not Found
+app.use(notFound);
 
-
-
-
-export default app
+export default app;

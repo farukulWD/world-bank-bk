@@ -1,27 +1,64 @@
-
 /* eslint-disable @typescript-eslint/no-this-alias */
 import { Schema, model } from 'mongoose';
 import config from '../../config';
 import { UserStatus } from './user.constant';
 import { TUser, UserModel } from './user.interface';
-import  bcrypt  from 'bcrypt';
+import bcrypt from 'bcrypt';
 
 const userSchema = new Schema<TUser, UserModel>(
   {
-    id: {
+    name: {
       type: String,
+      required: true,
+    },
+    address: {
+      address: {
+        type: String,
+      },
+      city: {
+        type: String,
+      },
+      state: {
+        type: String,
+      },
+      postal: {
+        type: Number,
+      },
+      country: {
+        type: String,
+        enum: ['Bangladesh'],
+        default: 'Bangladesh',
+      },
+    },
+    isMobileVefify: {
+      type: Boolean,
+      default: false,
+    },
+    isEmailVefify: {
+      type: Boolean,
+      default: false,
+    },
+    kyc: {
+      type: Boolean,
+      default: false,
+    },
+    mobile: {
+      type: Number,
       required: true,
       unique: true,
     },
     email: {
       type: String,
-      required: true,
+
       unique: true,
     },
     password: {
       type: String,
       required: true,
       select: 0,
+    },
+    profileImg: {
+      type: String,
     },
     passwordChangedAt: {
       type: Date,
@@ -32,7 +69,7 @@ const userSchema = new Schema<TUser, UserModel>(
     },
     status: {
       type: String,
-      enum: UserStatus,
+      enum: ['active', 'inactive'],
       default: 'active',
     },
     isDeleted: {
