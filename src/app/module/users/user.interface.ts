@@ -3,9 +3,10 @@ import { Model } from 'mongoose';
 import { USER_ROLE } from './user.constant';
 
 export interface TUser extends Document {
+  _id: string;
   name: string;
   email?: string;
-  mobile: number;
+  mobile: string;
   profileImg: string;
   password: string;
   passwordChangedAt?: Date;
@@ -16,7 +17,7 @@ export interface TUser extends Document {
     address: string;
     city: string;
     state: string;
-    postal: number;
+    postal: string;
     country: 'Bangladesh';
   };
   isMobileVefify?: boolean;
@@ -24,7 +25,7 @@ export interface TUser extends Document {
   kyc?: boolean;
 }
 export interface UserModel extends Model<TUser> {
-  isUserExistsByCustomId(id: string): Promise<TUser | null>;
+  userFindByMobile(mobile: string): Promise<TUser | null>;
   isPasswordMatched(
     plainTextPassword: string,
     hashedPassword: string,

@@ -24,13 +24,7 @@ const userValidationSchema = z.object({
       isEmailVefify: z.boolean().default(false).optional(),
       kyc: z.boolean().default(false).optional(),
 
-      mobile: z
-        .number({
-          required_error: 'Mobile number is required',
-          invalid_type_error: 'Mobile number must be a number',
-        })
-        .int()
-        .nonnegative(),
+      mobile: z.string().min(10, { message: 'Mobile number is required' }),
 
       email: z.string().email({ message: 'Invalid email address' }).optional(),
 

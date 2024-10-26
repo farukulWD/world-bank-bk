@@ -43,7 +43,7 @@ const userSchema = new Schema<TUser, UserModel>(
       default: false,
     },
     mobile: {
-      type: Number,
+      type: String,
       required: true,
       unique: true,
     },
@@ -99,8 +99,8 @@ userSchema.post('save', function (doc, next) {
   next();
 });
 
-userSchema.statics.isUserExistsByCustomId = async function (id: string) {
-  return await User.findOne({ id }).select('+password');
+userSchema.statics.userFindByMobile = async function (payload: string) {
+  return await User.findOne({ mobile: payload }).select('+password');
 };
 
 userSchema.statics.isPasswordMatched = async function (
